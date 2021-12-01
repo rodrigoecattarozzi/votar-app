@@ -16,13 +16,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario<Rol> implements UserDetails {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Rol rol;
 
     @NotBlank
     private String nombre;
@@ -56,6 +54,10 @@ public class Usuario<Rol> implements UserDetails {
     private List<Suscriptor> suscriptor = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Rol rol;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ciudad_id", nullable = false)
     private Ciudad ciudad;
 
@@ -67,57 +69,12 @@ public class Usuario<Rol> implements UserDetails {
     @JoinColumn(name = "pais_id", nullable = false)
     private Pais pais;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(rol.toString()));
-        return roles;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public String getNombre() {
@@ -218,6 +175,18 @@ public class Usuario<Rol> implements UserDetails {
 
     public void setPais(Pais pais) {
         this.pais = pais;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     /*    public void agregarCarrito(Carrito carrito) {
