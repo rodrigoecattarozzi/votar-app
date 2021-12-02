@@ -14,5 +14,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     List<Usuario> findByFechaDeCreacionBetween(LocalDateTime desde, LocalDateTime hasta);
 
+    List<Usuario> findByNombreContaining(String nombre);
+
+    List<Usuario> findByApellidoContaining(String apellido);
+
     List<Usuario> findByNombreContainingOrApellidoContaining(String nombre, String apellido);
+
 }

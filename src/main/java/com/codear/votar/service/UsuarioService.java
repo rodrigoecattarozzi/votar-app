@@ -1,9 +1,7 @@
 package com.codear.votar.service;
 
-import com.codear.votar.domain.Usuario;
 import com.codear.votar.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
