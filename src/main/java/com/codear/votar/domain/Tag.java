@@ -1,5 +1,6 @@
 package com.codear.votar.domain;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
-6609410
+@Data
 @Table(name = "tag")
 public class Tag {
 

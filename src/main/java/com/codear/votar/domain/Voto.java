@@ -5,12 +5,10 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-  @Data
+@Data
 @Table(name = "voto")
 public class Voto {
 
@@ -20,9 +18,6 @@ public class Voto {
 
     @CreationTimestamp
     private LocalDateTime fechaDeCreacion;
-
-    @NotBlank
-    private BigDecimal objetivo;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "usuario_id", nullable = false)
