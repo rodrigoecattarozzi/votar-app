@@ -1,6 +1,8 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "suscriptor")
 public class Suscriptor {
 

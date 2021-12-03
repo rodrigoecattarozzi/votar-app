@@ -1,6 +1,8 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,6 +15,8 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "emprendimiento")
 public class Emprendimiento {
 
@@ -41,7 +45,13 @@ public class Emprendimiento {
     private BigDecimal objetivo;
 
     @OneToMany(mappedBy = "emprendimiento", cascade = CascadeType.ALL)
-    private List<Evento> evento = new ArrayList<>();
+    private List<Voto> voto = new ArrayList<>();
+
+    @OneToMany(mappedBy = "emprendimiento", cascade = CascadeType.ALL)
+    private List<Tag> tag = new ArrayList<>();
+
+    @OneToMany(mappedBy = "emprendimiento", cascade = CascadeType.ALL)
+    private List<Url> url = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "usuario_id", nullable = false)

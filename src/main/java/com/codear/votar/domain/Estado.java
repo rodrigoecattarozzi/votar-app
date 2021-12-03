@@ -13,7 +13,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
-public class Pais {
+@Table(name = "estado")
+public class Estado {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +23,11 @@ public class Pais {
     @NotBlank
     private String nombre;
 
-    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
-    private List<Provincia> provincia = new ArrayList<>();
+    @Column(columnDefinition="TEXT")
+    @NotBlank
+    private String descripcion;
+
+    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
+    private List<Evento> evento = new ArrayList<>();
 
 }

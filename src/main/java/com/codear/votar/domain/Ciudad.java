@@ -1,12 +1,17 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
+@Table(name = "ciudad")
 public class Ciudad {
 
     @Id
@@ -15,10 +20,6 @@ public class Ciudad {
 
     @NotBlank
     private String nombre;
-
-    @Column(columnDefinition="TEXT")
-    @NotBlank
-    private String descripcion;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "provincia_id", nullable = false)

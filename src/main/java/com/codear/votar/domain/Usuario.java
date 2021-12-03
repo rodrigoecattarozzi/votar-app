@@ -1,6 +1,8 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,6 +15,8 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "usuario")
 public class Usuario {
 

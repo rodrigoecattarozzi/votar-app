@@ -1,6 +1,8 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "tag")
 public class Tag {
 
@@ -24,7 +28,7 @@ public class Tag {
     private String url;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "evento_id", nullable = false)
-    private Evento evento;
+    @JoinColumn(name = "emprendimiento_id", nullable = false)
+    private Emprendimiento emprendimiento;
 
 }

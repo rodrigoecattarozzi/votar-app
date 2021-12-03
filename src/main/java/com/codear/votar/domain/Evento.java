@@ -1,5 +1,8 @@
 package com.codear.votar.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@Accessors(chain = true)
 @Table(name = "evento")
 public class Evento {
 
@@ -25,9 +31,6 @@ public class Evento {
     @Column(columnDefinition="TEXT")
     @NotBlank
     private String descripcion;
-
-    @NotBlank
-    private Boolean estado;
 
     @CreationTimestamp
     private LocalDateTime fechaDeCreacion;
@@ -53,12 +56,6 @@ public class Evento {
     private List<Suscriptor> suscriptor = new ArrayList<>();
 
     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
-    private List<Url> url = new ArrayList<>();
-
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
-    private List<Tag> tag = new ArrayList<>();
-
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL)
     private List<Auspiciante> auspiciante = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -70,7 +67,7 @@ public class Evento {
     private Ciudad ciudad;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "emprendimiento_id", nullable = false)
-    private Emprendimiento emprendimiento;
+    @JoinColumn(name = "estado_id", nullable = false)
+    private Estado estado;
 
 }

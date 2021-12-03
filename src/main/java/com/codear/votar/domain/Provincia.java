@@ -1,6 +1,8 @@
 package com.codear.votar.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@Accessors(chain = true)
 public class Provincia {
 
     @Id
@@ -17,10 +21,6 @@ public class Provincia {
 
     @NotBlank
     private String nombre;
-
-    @Column(columnDefinition="TEXT")
-    @NotBlank
-    private String descripcion;
 
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL)
     private List<Ciudad> ciudad = new ArrayList<>();
