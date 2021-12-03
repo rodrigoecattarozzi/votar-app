@@ -20,8 +20,8 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String nombre;
+    @Enumerated(EnumType.STRING)
+    private RolesUsuario role;
 
     @Column(columnDefinition="TEXT")
     @NotBlank

@@ -20,8 +20,8 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String nombre;
+    @Enumerated(EnumType.STRING)
+    private EstadoEvento estado;
 
     @Column(columnDefinition="TEXT")
     @NotBlank
