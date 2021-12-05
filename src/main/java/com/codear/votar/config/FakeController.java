@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/api")
-@Api(value = "brs-application", description = "Operations pertaining to user login and logout in the BRS application")
+@Api(value = "votar-application")
 public class FakeController {
     @ApiOperation("Login")
     @PostMapping("/auth")

@@ -36,7 +36,7 @@ public class UsuarioDto {
 
     private Provincia provincia;
 
-    private Pais pais;
+    private PaisDto pais;
 
     private List<Emprendimiento> emprendimiento;
 
